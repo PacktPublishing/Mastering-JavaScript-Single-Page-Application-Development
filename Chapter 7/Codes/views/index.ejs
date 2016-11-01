@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="giftAppModule">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div ng-controller="GreetingController">
+       {{ greeting }} from {{ name }} {{ 2+3 }} {{ newName }}
+        <p><input type=""text" ng-model="newName"></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+    <script src="/javascripts/app.js"></script>
+  </body>
+</html>

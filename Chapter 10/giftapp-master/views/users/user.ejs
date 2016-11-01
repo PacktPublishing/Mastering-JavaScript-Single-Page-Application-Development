@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= appName %>: <%= user.firstName %> <%= user.lastName %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= user.firstName %> <%= user.lastName %></h1>
+
+<ul>
+    <li>Email: <%= user.email %></li>
+    <li>Id: <%= user._id %></li>
+</ul>
+
+<p><a href="/users/show">&lt; Back</a></p>
+
+
+</body>
+</html>

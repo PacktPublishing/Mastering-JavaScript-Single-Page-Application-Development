@@ -1,0 +1,161 @@
+
+Var class = ''myClass'';
+{
+    class: ''myClass''
+}
+{
+    “"class”": “"myClass”"
+}
+<?xml version=""1.0"" encoding=""UTF-8""?>
+
+<note>
+
+    <to>Tobums Kindermeyer</to>
+
+    <from>Jarmond Dittlemore</from>
+
+    <heading>A Message</heading>
+
+    <body>Hello world!</body>
+
+</note>
+
+
+
+
+
+item-key-one:
+  	- list item 1
+  	- list item 2
+item-key-two:
+	  nested_key_one: this is an associative array
+  	nested_key_two: end the associative array
+{
+    “"_id”": ObjectId(“"542c2b97bac0595474108b48”"),
+    “"timestamp”": Timestamp(1412180887, 1)
+}
+{
+    “"id”": 1
+}
+{
+    “"id”": “"myID”"
+}
+<!doctype html>
+<html>
+    <body>
+        <p>This is some welcome text.</p>
+        <div class=“"container”">
+            The application will be loaded here.
+        </div>
+    </body>
+</html>
+<!doctype html>
+<html>
+    <body>
+        <header>Static header content</header>
+        <div class=“"container”">
+            The application will be loaded here.
+        </div>
+        <footer>Static footer content</footer>
+    </body>
+</html>
+<script>
+    document.addEventListener(‘'DOMContentLoaded’', function(event) {
+        loadMyApp();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        loadMyApp();
+    });
+</script>
+<script>
+    document.onreadystatechange = function() {
+        if (document.readyState === ‘'interactive’') {
+            loadMyApp();
+        }
+    };
+</script>
+<!doctype html>
+<html>
+    <head>
+        <script src=“"app.js”"></script>
+    </head>
+    <body>
+       <div class=“"container”">
+            The application will be loaded here.
+        </div>
+  </body>
+</html>
+<!doctype html>
+<html>
+    <body>
+       <div class=“"container”">
+            The application will be loaded here.
+        </div>
+        <script src=“"app.js”"></script>
+   </body>
+</html>
+<!doctype html>
+<html>
+    <body>
+       <div class=“"container”">
+            The application will be loaded here.
+        </div>
+        <script src=“"app.js”" async></script>
+   </body>
+</html>
+
+
+
+<!doctype html>
+<html>
+    <body>
+        <script src=“"app.js”" defer></script>
+        <div class=“"container”">
+            The application will be loaded here.
+        </div>
+  </body>
+</html>
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>This is a static HTML page</title>
+    </head>
+    <body>
+       <div class=“"container”">
+            The application will be loaded here.
+        </div>
+        <script src=“"app.js”"></script>
+    </body>
+</html>
+
+
+
+var express = require(''express'');
+var app = express();
+app.get(''/'', function(request, response) {
+    response.sendFile(''/index.html'', {root: __dirname});
+});
+app.listen(8080, function() {
+    console.log(''App now listening on port 8080'');
+});
+app.use(''/'', express.static(''./''));
+Cannot GET /profile
+app.get(‘'*’', function(request, response) {
+    response.sendFile(’'/index.html’', {root: __dirname});
+});
+var express = require(''express'');
+var app = express();
+
+app.use(''/'', express.static(''./''));
+
+app.get(''*'', function(request, response) {
+    response.sendFile(''/index.html'', {root: __dirname});
+});
+
+app.listen(8080, function() {
+    console.log(''App now listening on port 8080'');
+});

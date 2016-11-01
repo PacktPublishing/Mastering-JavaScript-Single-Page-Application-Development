@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Users</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>User List: <%= appName %></h1>
+
+<table>
+    <thead>
+        <tr>
+
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Dashboard</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% users.forEach(function(user, index){ -%>
+        <tr>
+            <td><a href="show/<%= user._id%> "><%= user.firstName %></a></td>
+            <td><%= user.lastName %></td>
+            <td><%= user.email %></td>
+            <td><a href="/dash/<%= user._id %>">View</a></td>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+
+</body>
+</html>

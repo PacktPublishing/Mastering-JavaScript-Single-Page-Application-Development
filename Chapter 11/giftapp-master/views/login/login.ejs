@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head >
+    <title>Signup</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+
+<nav class="nav navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"> Giftapp Login</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <% if(message){ %>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4" role="alert">
+            <%= message %>
+        </div>
+    </div>
+    <% } %>
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form method="post" action="/login">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

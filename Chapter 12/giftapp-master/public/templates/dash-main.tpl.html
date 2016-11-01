@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6">
+        <h2>My Lists</h2>
+
+        <a class="btn btn-primary" role="button" ui-sref="add" href="#/add">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Add List</a>
+        <ul class="list-unstyled">
+            <li ng-repeat="list in lists"><a class="btn btn-link" href="/giftlist/{{list._id}}" role="button">{{ list.name }}</a></li>
+
+        </ul>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <h2>Lists Shared With Me</h2>
+    </div>
+</div>

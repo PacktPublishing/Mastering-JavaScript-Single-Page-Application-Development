@@ -1,0 +1,276 @@
+export PATH=/usr/local/opt/mongodb/bin:$PATH
+var mongo = require('mongodb').MongoClient;
+var assert = require('assert');
+var url = 'mongodb://localhost:27017/test';
+
+mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log('Connected to MongoDB.');
+    db.close();
+});
+var express = require('express');
+var app = express();
+var mongo = require('mongodb').MongoClient;
+var assert = require('assert');
+var url = 'mongodb://localhost:27017/test';
+
+mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log('Connected to MongoDB.');
+    db.close();
+});
+
+
+
+
+app.use('/', express.static('./'));
+
+app.get('*', function(request, response) {
+    response.sendFile('/index.html', {root: __dirname});
+});
+
+app.listen(8080, function() {
+    console.log('App now listening on port 8080');
+});
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+app.post('/api/users', function(request, response) {
+    console.dir(request.body);
+    mongo.connect(url, function(err, db) {
+        db.collection('users')
+        .insertOne(request.body, function(err, result) {
+            if (err) {
+                throw err;
+            }
+            console.log('Document inserted successfully.');
+            response.json(result);
+            db.close();
+        });
+    });
+});
+
+
+
+
+var express = require('express');
+var app = express();
+var mongo = require('mongodb').MongoClient;
+var assert = require('assert');
+var url = 'mongodb://localhost:27017/test';
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+app.post('/api/users', function(request, response) {
+    console.dir(request.body);
+    mongo.connect(url, function(err, db) {
+        db.collection('users')
+        .insertOne(request.body, function(err, result) {
+            if (err) {
+                throw err;
+            }
+            console.log('Document inserted successfully.');
+            response.json(result);
+            db.close();
+        });
+    });
+});
+
+
+
+
+
+app.use('/', express.static('./'));
+
+app.get('*', function(request, response) {
+    response.sendFile('/index.html', {root: __dirname});
+});
+
+app.listen(8080, function() {
+    console.log('App now listening on port 8080');
+});
+<h2>POST Request</h2>
+<form data-url="/api/users" data-method="post">
+    <p>
+        <label>
+            First name: 
+            <input type="text" name="first_name">
+        </label>
+    </p>
+    <p>
+        <label>
+            Last name: 
+            <input type="text" name="last_name">
+        </label>
+    </p>
+    <p>
+        <label>
+            Title: 
+            <input type="text" name="title">
+        </label>
+    </p>
+    <p>
+        <label>
+            Website: 
+            <input type="text" name="website">
+        </label>
+    </p>
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</form>
+
+
+
+
+
+app.get('/api/users', function(req, res) {
+    mongo.connect(url, function(err, db) {
+        db.collection('users').find()
+            .toArray(function(err, result) {
+            if (err) {
+                throw err;
+            }
+            console.log(result.length + ' documents retrieved.');
+            res.json(result);
+            db.close();
+        });
+    });
+});
+
+
+
+
+
+
+<h2>GET Request</h2>
+<p>
+    <a href="#"
+       data-url="/api/users"
+       data-template="users"
+       data-selector=".results">Load user data</a>
+</p>
+<div class="results"></div>
+{{#each data}}
+    <p>{{first_name}} {{last_name}}</p>
+{{/each}}
+{
+    “id”: 1,
+    “name”: {
+        “first”: “Philip”,
+        “last”: “Klauzinski”
+    },
+    “title”: “Sr. UI Engineer”,
+    “website”: “http://webtopian.com”
+}
+{
+    “first_name”: “Peebo”,
+    “last_name”: “Sanderson”,
+    “title”: “Vagrant”,
+    “website”: “http://salvationarmy.org”
+}
+app.put('/api/users', function(req, res) {
+    mongo.connect(url, function(err, db) {
+        db.collection('users').updateOne(
+            { "id": 1 },
+            req.body,
+            function(err, result) {
+                if (err) {
+                    throw err;
+                }
+                console.log(result);
+                res.json(result);
+                db.close();
+            }
+        );
+    });
+});
+
+
+
+
+
+
+<h2>PUT Request</h2>
+<form data-url="/api/users" data-method="put">
+    <p>
+        <label>
+            First name:
+            <input type="text" name="first_name">
+        </label>
+    </p>
+    <p>
+        <label>
+            Last name: 
+            <input type="text" name="last_name">
+        </label>
+    </p>
+    <p>
+        <label>
+            Title: 
+            <input type="text" name="title">
+        </label>
+    </p>
+    <p>
+        <label>
+            Website: 
+            <input type="text" name="website">
+        </label>
+    </p>
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</form>
+
+
+
+
+app.delete('/api/users', function(req, res) {
+    mongo.connect(url, function(err, db) {
+        db.collection('users').deleteOne(
+            { "first_name": "Peebo" },
+            function(err, result) {
+            if (err) {
+                throw err;
+            }
+            console.log(result);
+            res.json(result);
+            db.close();
+        });
+    });
+});
+
+
+
+
+
+
+<h2>DELETE Request</h2>
+<button data-url="/api/users" 
+        data-method="delete" 
+        data-template="user" 
+        data-selector=".delete-response">Delete Peebo</button>
+<div class="delete-response"></div>
+<env:Envelope xmlns:env=“http://www.w3.org/2003/05/soap-envelope">
+<env:Header>
+    <n:shipping >
+      This is a shipping message
+    </n:shipping>
+  </env:Header>
+  <env:Body>
+    <env:Fault>
+      <env:Code>
+        <env:Value>
+          env:VersionMismatch
+        </env:Value>
+      </env:Code>
+      <env:Reason>
+        <env:Text xml:lang="en">
+          versions do not match
+        </env:Text>
+      </env:Reason>
+    </env:Fault>
+  </env:Body>
+</env:Envelope>

@@ -1,0 +1,501 @@
+<p>Hello, <%= name %>.</p>
+<ul>
+    <% _.each(items, function(item) { %>
+        <li><%= item.property %></li>
+    <% } %>
+</ul>
+{
+    "name": {
+        "first": "Udis",
+        "last": “Petroyka"
+    },
+    "age": "82"
+}
+<p>{{name.first}} {{name.last}}</p>
+<p>Age: {{age}}</p>
+<p>Udis Petroyka</p>
+<p>Age: 82</p>
+
+{
+    "name": {
+        "first": "Jarmond",
+        "last": “Dittlemore"
+    },
+    “email_subscriber": false
+}
+<p>{{name.first}} {{name.last}}</p>
+{{#email_subscriber}}
+    <p>Content here will not be shown for this user.</p>
+{{/email_subscriber}}
+<p>Jarmond Dittlemore</p>
+
+{
+    "people": [
+        { "firstName": “Peebo", "lastName": "Sanderson" },
+        { "firstName": "Udis", "lastName": "Petroyka" },
+        { "firstName": “Jarmond", "lastName": "Dittlemore" },
+        { "firstName": "Chappy", "lastName": “Scrumdinger" }
+    ]
+}
+<ul>
+{{#people}}
+    <li>{{firstName}} {{lastName}}</li>
+{{/people}}
+</ul>
+<ul>
+    <li>Peebo Sanderson</li>
+    <li>Udis Petroyka</li>
+    <li>Jarmond Dittlemore</li>
+    <li>Chappy Scrumdinger</li>
+</ul>
+{
+    "people": [
+        { "firstName": “Peebo", "lastName": "Sanderson" },
+        { "firstName": "Udis", "lastName": "Petroyka" },
+        { "firstName": “Jarmond", "lastName": "Dittlemore" },
+        { "firstName": "Chappy", "lastName": “Scrumdinger" }
+    ],
+    “name”: function() {
+        return this.firstName + ‘ ‘ + this.lastName;
+    }
+}
+<ul>
+{{#people}}
+    <li>{{name}}</li>
+{{/people}}
+</ul>
+<ul>
+    <li>Peebo Sanderson</li>
+    <li>Udis Petroyka</li>
+    <li>Jarmond Dittlemore</li>
+    <li>Chappy Scrumdinger</li>
+</ul>
+{
+    "name": {
+        "first": "Peebo",
+        "last": “Sanderson"
+    },
+    “email_subscriber": false
+}
+<p>{{name.first}} {{name.last}}</p>
+{{^email_subscriber}}
+    <p>I am not an email subscriber.</p>
+{{/email_subscriber}}
+<p>Peebo Sanderson</p>
+<p>I am not an email subscriber.</p>
+<p>Udis likes to comment{{! hi, this comment won’t be rendered }}</p>
+<!— This is a standard HTML comment —>
+<p>Udis likes to comment</p>
+<!— This is a standard HTML comment —>
+<h3>{{name.first}} {{name.last}}</h3>
+{{> user-details}}
+<ul>
+    {{^email_subscriber}}
+    <li>I am not an email subscriber</li>
+    {{/email_subscriber}}
+    <li>Age: {{age}}</li>
+    <li>Profession: {{profession}}</li>
+</ul>
+{
+    "name": {
+        "first": "Jarmond",
+        "last": “Dittlemore"
+    },
+    “email_subscriber": false,
+    “age”: 24,
+    “profession”: “Student”
+}
+<h3>Jarmond Dittlemore</h3>
+<ul>
+    <li>I am not an email subscriber</li>
+    <li>Age: 24</li>
+    <li>Profession: Student</li>
+</ul>
+{{=<% %>=}}
+{
+    "name": {
+        "first": "Chappy",
+        "last": “Scrumdinger"
+    },
+    “email_subscriber": false,
+    “age”: 96,
+    “profession”: “Oilman”
+}
+<p>Standard tags: {{name.first}} {{name.last}}</p>
+{{=<% %>=}}
+<p>New tags - Age: <%age%></p>
+<%={{ }}=%>
+<p>Standard tags again - Profession: {{profession}}</p>
+<p>Standard tags: Chappy Scrumdinger</p>
+<p>New tags - Age: 96</p>
+<p>Standard tags again - Profession: Oilman</p>
+{
+    "name": {
+        "first": "Peebo",
+        "last": “Sanderson"
+    },
+    “email_subscriber": false,
+    “age”: 54,
+    “profession”: “Singer”
+}
+<!-- Mustache template -->
+<p>{{name.first}} {{name.last}}</p>
+{{#profession}}
+<p>Profession: {{profession}}</p>
+{{/profession}}
+<!-- Handlebars template -->
+<p>{{name.first}} {{name.last}}</p>
+{{#profession}}
+<p>Profession: {{this}}</p>
+{{/profession}}
+<!-- Handlebars template -->
+<p>{{name.first}} {{name.last}}</p>
+{{#profession}}
+<p>Profession: {{../profession}}</p>
+{{/profession}}
+<p>Peebo Sanderson</p>
+<p>Profession: Singer</p>
+
+{
+    "name": {
+        "first": "Udis",
+        "last": “Petroyka"
+    },
+    "age": "82"
+}
+
+Handlebars.registerHelper(‘fullName’, function(name) {
+    return name.first + ‘ ‘ + name.last;
+});
+<p>Hi, my name is {{fullName name}}.</p>
+<p>Hi, my name is Udis Petroyka.</p>
+{
+    "name": {
+        "first": "Jarmond",
+        "last": “Dittlemore"
+    },
+    “email_subscriber": false
+}
+<p>{{name.first}} {{name.last}}</p>
+{{#if email_subscriber}}
+    <p>I am an email subscriber.</p>
+{{/if}}
+<p>{{name.first}} {{name.last}}</p>
+{{#if email_subscriber}}
+    <p>I am an email subscriber.</p>
+{{else}}
+    <p>I am not an email subscriber.</p>
+{{/if}}
+<p>Jarmond Dittlemore</p>
+<p>I am not an email subscriber.</p>
+{
+    "name": {
+        "first": "Chappy",
+        "last": “Scrumdinger"
+    },
+    “email_subscriber": false
+
+}
+<p>{{name.first}} {{name.last}}</p>
+{{#unless email_subscriber}}
+   <p>I am not an email subscriber.</p>
+{{/if}}
+<p>Chappy Scrumdinger</p>
+<p>I am not an email subscriber.</p>
+{
+    "people": [
+        { "firstName": “Peebo", "lastName": "Sanderson" },
+        { "firstName": "Udis", "lastName": "Petroyka" },
+        { "firstName": “Jarmond", "lastName": "Dittlemore" },
+        { "firstName": "Chappy", "lastName": “Scrumdinger" }
+    ]
+}
+<ul>
+{{#each people}}
+    <li>{{this.firstName}} {{this.lastName}}</li>
+{{/each}}
+</ul>
+<ul>
+{{#each people}}
+    <li>{{firstName}} {{lastName}}</li>
+{{/each}}
+</ul>
+{
+    "name": {
+        "first": "Peebo",
+        "last": “Sanderson"
+    },
+    “email_subscriber": false,
+    “age”: 54,
+    “profession”: “Singer”
+}
+<h1>User Information</h1>
+<dl>
+    <dt>Name</dt>
+    {{#with name}}
+    <dd>{{first}} {{last}}</dd>
+    {{/with}}
+    <dt>Age</dt>
+    <dd>{{age}}</dd>
+    <dt>Profession</dt>
+   <dd>{{profession}}</dd>
+</dl>
+<h1>User Information</h1>
+<dl>
+    <dt>Name</dt>
+   <dd>Peebo Sanderson</dd>
+   <dt>Age</dt>
+    <dd>54</dd>
+    <dt>Profession</dt>
+   <dd>Singer</dd>
+</dl>
+<p class=“my-template”>
+    Hello, my name is <span></span>.
+</p>
+var data = {
+    name: ‘Udis Petroyka’
+};
+
+var directive = {
+    ‘span': 'name'
+};
+$p(‘.my-template’).render(data, directive);
+<p class=“my-template”>
+    Hello, my name is <span>Udis Petroyka</span>.
+</p>
+doctype html
+html(lang=“en”)
+  head
+    title= pageTitle
+body
+  h1 This is a heading
+  if thisVariableIsTrue
+    p This paragraph will show.
+  else
+    p This paragraph will show instead.
+
+{
+    pageTitle: ‘This is a dynamic page title’,
+    thisVariableIsTrue: true
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>This is a dynamic page title</title>
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+    <p>This paragraph will show.</p>
+  </body>
+</html>
+{
+    "name": {
+        "first": "Jarmond",
+        "last": “Dittlemore"
+    },
+    “email_subscriber": false,
+    “age”: 24,
+    “profession”: “Student”
+}
+h1#title Hello, my name is #{name.first} #{name.last}.
+if email_subscriber
+  p I am an email subscriber.
+else
+  p i am not an email subscriber.
+h2.age Age
+p= 24
+h2.profession Profession
+p I am a #{profession}.
+<h1 id=“title”>Hello, my name is Jarmond Dittlemore.</h1>
+<p>I am not an email subscriber.</p>
+<h2 class=“age”>Age</h2>
+<p>24</p>
+<h2 class=“profession”>Profession</h2>
+<p>I am a Student.</p>
+<ul>
+<% for (var i = 0; i < people.length; i++) { %>
+    <li><%= firstName %> <%= lastName %></li>
+<% } %>
+</ul>
+{
+    "people": [
+        { "firstName": “Peebo", "lastName": "Sanderson" },
+        { "firstName": "Udis", "lastName": "Petroyka" },
+        { "firstName": “Jarmond", "lastName": "Dittlemore" },
+        { "firstName": "Chappy", "lastName": “Scrumdinger" }
+    ]
+}
+<ul>
+    <li>Peebo Sanderson</li>
+    <li>Udis Petroyka</li>
+    <li>Jarmond Dittlemore</li>
+    <li>Chappy Scrumdinger</li>
+</ul>
+
+var data = {
+    "people": [
+        { "firstName": “Peebo", "lastName": "Sanderson" },
+        { "firstName": "Udis", "lastName": "Petroyka" },
+        { "firstName": “Jarmond", "lastName": "Dittlemore" },
+        { "firstName": "Chappy", "lastName": “Scrumdinger" }
+    ]
+};
+
+
+
+
+
+
+
+var html = new EJS({url: ‘templates/people.ejs’}).render(data);
+var html = new EJS({url: ‘templates/people.ejs’}).render(data);
+document.body.innerHTML = html;
+new EJS({url: ‘templates/people.ejs’}).update(‘element_id’, ‘people.json’);
+var html = new EJS({url: ‘templates/people.ejs’, cache: false}).render(data);
+<p>Here is a <%= link_to(‘link’, ‘/link/path’) %> to a path.</p>
+<p>Here is a <a href=“/link/path”>link</a> to a path.</p>
+<p><%= img_tag(‘/path/to/image.png’, ‘Description text’) %></p>
+<p><img src=“/path/to/image.png” alt=“Description text”></p>
+<%= form_tag(‘/path/to/action’, {method: ‘post’, multipart: true}) %>
+    <%= input_field_tag(‘user_input’, ‘value text here’) %>
+    <%= submit_tag(‘Submit’) %>
+<%= form_tag_end() %>
+<form action=“/path/to/action” method=“post” enctype=“multipart/form-data”>
+    <input type=“text” id=“user_input” name=“user_input” value=“value text here”>
+    <input type=“submit” value=“Submit”>
+</form>
+<p>This is the parent template.</p>
+<%= this.partial({url: ‘templates/partial.ejs %>
+<p>This is the partial template.</p>
+var html = new EJS({url: ‘templates/parent.ejs’}).render();
+document.body.innerHTML = html;
+<p>This is the parent template.</p>
+<p>This is the partial template.</p>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/handlebars/handlebars.runtime.min.js"></script>
+<script src="/bower_components/payloadjs/payload.js"></script>
+<script src="/templates.js"></script>
+
+
+
+
+
+
+
+
+uglify: {
+    options: {
+        preserveComments: false
+    },
+    main: {
+        files: {
+            'js/all.min.js': [
+              'bower_components/jquery/dist/jquery.js',
+              'bower_components/handlebars/handlebars.runtime.js',
+              'bower_components/payloadjs/payload.js',
+              'js/src/templates.js'
+            ]
+        }
+    }
+}
+
+grunt.loadNpmTasks('grunt-contrib-uglify');
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>My Application</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script src="/js/all.min.js"></script>
+   </body>
+</html>
+/
+js/
+   templates/
+                   user.hbs
+                   users.hbs
+
+
+
+
+
+handlebars: {
+    options: {
+        namespace: 'Handlebars.templates',
+        processName: function(file) {
+            return file.replace(/js\/templates\/|\.hbs/g, '');
+        },
+        partialRegex: /.*/,
+        partialsPathRegex: /\/partials\//
+    },
+    files: {
+        src: 'js/templates/**/*.hbs',
+        dest: 'js/src/templates.js'
+    }
+}
+
+
+files: {
+    src: 'js/templates/**/*.hbs',
+    dest: 'js/src/templates.js'
+}
+grunt.loadNpmTasks(‘grunt-contrib-handlebars’);
+files: {
+    'js/all.min.js': [
+        'bower_components/jquery/dist/jquery.js',
+        'bower_components/handlebars/handlebars.runtime.js',
+        'bower_components/payloadjs/payload.js',
+        'js/src/templates.js’
+    ]
+}
+uglify: {
+    files: ['js/src/*.js'],
+    tasks: ['uglify:main']
+}
+jshint: {
+    files: ['js/src/*.js', '!js/src/templates.js'],
+    tasks: ['jshint']
+}
+files: {
+    src: [
+        'Gruntfile.js',
+        'js/src/*.js',
+        '!js/src/templates.js'
+    ]
+}
+handlebars: {
+    files: ['js/templates/**/*.hbs'],
+    tasks: ['handlebars']
+}
+<h3>{{first_name}} {{last_name}}</h3>
+<p>{{title}}</>
+this["Handlebars"]["templates"]["user"] = Handlebars.template({…}});
+this["Handlebars"]["templates"]["users"] = Handlebars.template({…}});
+Handlebars.registerPartial("user", Handlebars.template({…});
+{{#each data}}
+    {{> user}}
+{{/each}}
+First name: Peebo
+Singer
+Title: Singer
+Philip Klauzinski
+Sr. UI Engineer
+
+Peebo Sanderson
+Last name: Sanderson

@@ -1,0 +1,122 @@
+
+<h1>User Information</h1>
+<dl>
+    <dt>Name</dt>
+    <dd>{{name.first}} {{name.last}}</dd>
+    <dt>Title</dt>
+    <dd>{{title}}</dd>
+    <dt>Website</dt>
+    <dd>{{website}}</dd>
+</dl>
+<html ng-app=""myApp"">
+<head>
+    <script src=""angular.js""></script>
+    <script src=""app.js""></script>
+</head>
+<body ng-controller=""UsersController"">
+
+    <ul>
+        <li ng-repeat=""user in users"">
+            {{user.first_name}} {{user.last_name}}
+        </li>
+    </ul>
+
+</body>
+</html>
+    <ul>
+        <li ng-repeat=""user in users"">
+            {{user.first_name}} {{user.last_name}}
+        </li>
+    </ul>
+$scope.users = [
+    {
+        id: 1,
+        first_name: ''Peebo'',
+        last_name: ''Sanderson''
+    },
+    {
+        id: 2,
+        first_name: ''Udis'',
+        last_name: ''Petroyka''
+    }
+];
+    <ul>
+        <li ng-repeat=""user in users"">
+            {{user.first_name}} {{user.last_name}}
+        </li>
+    </ul>
+<p><strong>Cost:</strong> {{ total | currency }}
+
+
+var myApp = angular.module(''myApp'', []);
+
+myApp.controller(''UsersController'', function($scope) {
+
+    $scope.users = [
+
+        {
+
+            id: 1,
+
+            first_name: ''Peebo'',
+
+            last_name: ''Sanderson''
+
+        },
+
+        {
+
+            id: 2,
+
+            first_name: ''Udis'',
+
+            last_name: ''Petroyka''
+
+        }
+
+    ];
+
+});
+
+
+Var myAppModule = angular.module(‘'myApp’', []);
+<body ng-app=”"myApp”">
+{
+    “"id”": 1,
+    “"name”": {
+        “"first”": “"Philip”",
+        “"last”": “"Klauzinski”"
+    },
+    “"title”": “"Sr. UI Engineer”",
+    “"website”": “"http://webtopian.com”"
+}
+
+
+<h1>User Information</h1>
+<dl>
+    <dt>Name</dt>
+    <dd>{{name.first}} {{name.last}}</dd>
+    <dt>Title</dt>
+    <dd>{{title}}</dd>
+    <dt>Website</dt>
+    <dd>{{website}}</dd>
+</dl>
+<!doctype html>
+<html>
+    <head>
+        <title>My Application</title>
+    </head>
+    <body>
+        <p><a href=""#"" data-url=""/user.json"" data-template=""user"" data-selector="".results"">Load user data</a></p>
+        <div class=""results""></div>
+        <script src=""/bower_components/jquery/dist/jquery.min.js""></script>
+        <script src=""/bower_components/handlebars/handlebars.runtime.min.js""></script>
+        <script src=""/bower_components/payloadjs/payload.js""></script>
+        <script src=""/templates.js""></script>
+        <script>
+            Payload.deliver({
+                templates: Handlebars.templates            
+            });
+        </script>
+    </body>
+</html>

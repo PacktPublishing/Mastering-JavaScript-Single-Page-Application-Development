@@ -1,0 +1,422 @@
+var myApp = angular.module(‘myApp’, []);
+myApp.controller(‘UserController’, function UserController($scope) {
+    $scope.user = {
+        firstName: ‘Peebo’,
+        lastName: ‘Sanderson’
+    };
+});
+
+
+
+
+<body ng-app="myApp">
+    <div ng-controller="UserController">
+        <p>
+            <strong>First Name:</strong> {{user.firstName}}<br>
+            <strong>Last Name:</strong> {{user.lastName}}
+        </p>
+    </div>
+</body>
+<body ng-app="myApp">
+    <div ng-controller="UserController">
+        <p>
+            <strong>First Name:</strong>
+            <span ng-bind="user.firstName"></span><br>
+            <strong>Last Name:</strong>
+            <span ng-bind="user.lastName"></span>
+        </p>
+    </div>
+</body>
+<body ng-app="myApp">
+    <div ng-controller="UserController">
+        <p>
+            <strong>First Name:</strong> {{user.firstName}}<br>
+            <strong>Last Name:</strong> {{user.lastName}}
+        </p>
+        <p>
+            <label>
+                <input type="text" ng-model="user.firstName">
+            </label><br>
+            <label>
+                <input type="text" ng-model="user.lastName">
+            </label>
+        </p>
+    </div>
+</body>
+
+
+
+
+
+
+$scope.$watch(watchExpression, listener);
+
+$scope.user = {
+    firstName: ‘Peebo’,
+    lastName: ‘Sanderson’,
+    age: 54
+};
+
+$scope.$watch(‘user.firstName’, listener);
+$scope.user.firstName = ‘Udis’;
+$scope.$watch(‘user’, listener);
+$scope.user.lastName = ‘Petroyka’;
+// The entire value of $scope.user has not changed
+
+$scope.user = {
+    firstName: ‘Udis’,
+    lastName: ‘Petroyka,
+    age: 82
+};
+// The entire value of $scope.user has changed
+
+$scope.$watchCollection(obj, listener);
+
+$scope.$watchCollection(‘user’, listener);
+$scope.user.firstName = ‘Jarmond’;
+// A property of the object has changed
+
+$scope.$watch(watchExpression, listener, true);
+
+var User = Ember.Object.extend({
+    firstName: null,
+    lastName: null,
+    fullName: Ember.computed(‘firstName’, ‘lastName’, function() {
+        return `${this.get('firstName')} ${this.get('lastName')}`;
+    })
+});
+var currentUser = User.create({
+    firstName: ‘Chappy’,
+    lastName: ‘Scrumdinger’
+});
+currentUser.get(‘fullName’); // returns “Chappy Scrumdinger”
+var User = Ember.Object.create({
+    firstName: null,
+    lastName: null,
+    nickName: Ember.computed.oneWay(‘firstName’)
+});
+
+var currentUser = User.create({
+    firstName: ‘Peebo’,
+    lastName: ‘Sanderson’
+});
+currentUser.get(‘nickName’); // returns “Peebo”
+currentUser.set(‘nickName’, ‘Chappy’);
+currentUser.get(‘firstName’); // returns “Peebo”
+var User = Ember.Object.extend({
+    firstName: null,
+    lastName: null,
+    nickName: Ember.computed.alias(‘firstName’)
+});
+var currentUser = User.create({
+    firstName: ‘Udis’,
+    lastName: ‘Petroyka’
+});
+currentUser.get(‘nickName’); // returns “Udis”
+currentUser.set(‘nickName’, ‘Peebo’);
+currentUser.get(‘firstName’); // returns “Peebo”
+var dog = {
+    name: ‘Belladonna’,
+    favoriteThing: ‘Snacks!’
+};
+
+
+
+
+
+
+<h1 rv-text="dog.name"></h1>
+<p>
+    My favorite thing is: 
+    <span rv-text="dog.favoriteThing"></span>
+</p>
+<h1>{ dog.name }</h1>
+<p>My favorite thing is: { dog.favoriteThing }</p>
+<h1>Belladonna</h1>
+<p>My favorite thing is: Snacks!</p
+dog.name = ‘Zoe’; // binder in View is updated
+dog.favoriteThing = ‘Barking!’; // binder in View is updated
+
+<h1>Zoe</h1>
+<p>My favorite thing is: Barking!</p>
+
+rivets.binders.size = function(el, val) {
+    el.style.fontSize = val;
+};
+var dog = {
+    name: ‘Belladonna’,
+    favoriteThing: ‘Snacks!’,
+    size: ‘2rem’
+};
+
+
+
+
+
+<h1>{ dog.name }</h1>
+<p>
+    My favorite thing is:
+    <span rv-size="dog.size">{ dog.favoriteThing }</span>
+</p>
+<input type=“text” rv-value=“dog.name”>
+
+rivets.binders.validate = {
+    bind: function(el) {
+        adapter = this.config.adapters[this.key.interface];
+        model = this.model;
+        keypath = this.keypath;
+
+        this.callback = function() {
+            value = adapter.read(model, keypath);
+            adapter.publish(model, keypath, !value);
+        }
+
+        $(el).on('focus', this.callback);
+    },
+
+    unbind: function(el) {
+        $(el).off('blur', this.callback);
+    },
+
+    routine: function(el, value) {
+        $(el)[value ? 'removeClass' : 'addClass']('invalid');
+    }
+};
+
+
+
+
+
+
+var firstName = 'Udis';
+var user = {
+    get firstName() {
+        return firstName;
+    },
+    set firstName(val) {
+        firstName = val;
+    }
+};
+
+
+
+
+
+
+
+console.log(user.firstName); // Returns “Udis”
+user.firstName = 'Jarmond';
+console.log(user.firstName); // Returns “Jarmond”
+console.log(firstName); // Returns “Jarmond”
+var user = {};
+Object.defineProperty(user, 'firstName', {
+    get: function() {
+        return firstName;
+    }
+    set: function(val) {
+        firstName = val;
+    },
+    configurable: true,
+    enumerable: true
+});
+
+
+
+
+
+
+
+
+
+
+<input type="text" name=“firstName" value=“Jarmond”>
+var firstName = document.querySelector('input[name="firstName"]');
+var user = {};
+Object.defineProperty(user, 'firstName', {
+    get: function() {
+        return firstName.value;
+    },
+    set: function(val) {
+       firstName.value = val;
+    },
+    configurable: true,
+    enumerable: true
+});
+user.firstName = ‘Chappy’;
+firstName.oninput = function() {
+    user.firstName = user.firstName;
+};
+
+
+
+
+<p>
+    <label>
+        First name: 
+        <input type="text" name="firstName" value="Udis">
+    </label>
+</p>
+
+
+
+
+var firstName = document.querySelector('input[name="firstName"]');
+var user = {};
+Object.defineProperty(user, 'firstName', {
+    get: function() {
+        return firstName.value;
+    },
+    set: function(val) {
+        var list = document.querySelectorAll(
+            ‘[data-bind=“firstName"]'
+        ), i;
+        for (i = 0; i < list.length; i++) {
+            list[i].innerHTML = val;
+        }
+        firstName.value = val;
+    },
+    configurable: true,
+    enumerable: true
+});
+user.firstName = user.firstName;
+firstName.oninput = function() {
+    user.firstName = user.firstName;
+};
+
+
+
+
+user.firstName = ‘Peebo’;
+function dataBind(obj, prop) {
+    var input = document.querySelector('[name="' + prop + ‘"]');
+    input.value = obj[prop] || input.value;
+    Object.defineProperty(obj, prop, {
+        get: function() {
+            return input.value;
+        },
+        set: function(val) {
+            var list = document.querySelectorAll(
+                '[data-bind="' + prop + '"]'
+            ), i;
+            for (i = 0; i < list.length; i++) {
+                list[i].innerHTML = val;
+            }
+            input.value = val;
+        },
+        configurable: true,
+        enumerable: true
+    });
+    obj[prop] = obj[prop];
+    input.oninput = function() {
+        obj[prop] = obj[prop];
+    };
+}
+
+
+
+
+// For the input
+var input = document.querySelector('[name="' + prop + ‘"]');
+// For other elements
+var list = document.querySelectorAll('[data-bind="' + prop + '"]');
+var user = {};
+user.firstName = ‘Peebo’;
+dataBind(user, 'firstName');
+var user = {};
+user.firstName = ‘Peebo’;
+dataBind(user, 'firstName');
+<input type="text" name=“firstName" value=“Jarmond”>
+
+console.log(user.firstName); // returns “Jarmond”
+document.querySelector('strong[data-bind="firstName"]')
+    .innerHTML = 'Udis';
+console.log(user.firstName); // returns “Jarmond”
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    console.log(mutation);
+  });    
+}); 
+    var config = {
+        attributes: true,
+        childList: true,
+        characterData: true
+    };
+
+
+
+
+
+var elem = document.querySelector(‘[data-bind=“firstName”]’);
+observer.observe(elem, config);
+function dataBind(obj, prop) {
+    var input = document.querySelector('[name="' + prop + '"]');
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            var val = mutation.target.innerHTML;
+            if (obj[prop] !== val) {
+                console.log(
+                    'Inequality detected: "' + 
+                    obj[prop] + '" !== "' + val + '"'
+                );
+                obj[prop] = mutation.target.innerHTML;
+            }
+        });
+    });
+    var config = {
+        attributes: true,
+        childList: true,
+        characterData: true
+    };
+    var list = document.querySelectorAll(
+        '[data-bind="' + prop + '"]'
+    ), i;
+    for (i = 0; i < list.length; i++) {
+        observer.observe(list[i], config);
+    }
+    input.value = obj[prop] || input.value;
+    Object.defineProperty(obj, prop, {
+        get: function() {
+            return input.value;
+        },
+        set: function(val) {
+            var list = document.querySelectorAll(
+                '[data-bind="' + prop + '"]'
+            ), i;
+            for (i = 0; i < list.length; i++) {
+                list[i].innerHTML = val;
+            }
+            input.value = val;
+        },
+        configurable: true,
+        enumerable: true
+    });
+    obj[prop] = obj[prop];
+    input.oninput = function() {
+        obj[prop] = obj[prop];
+    };
+}
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        var val = mutation.target.innerHTML;
+        if (obj[prop] !== val) {
+            console.log(
+                'Inequality detected: "' + 
+                obj[prop] + '" !== "' + val + '"'
+            );
+            obj[prop] = mutation.target.innerHTML;
+        }
+    });
+});
+
+
+
+
+
+
+<input type="text" name=“firstName" value=“Chappy”>
+
+console.log(user.firstName); // returns “Chappy”
+user.firstName = ‘Peebo’;
+document.querySelector('strong[data-bind="firstName"]')
+    .innerHTML = 'Udis';
+console.log(user.firstName); // returns “Udis”

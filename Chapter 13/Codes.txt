@@ -1,0 +1,280 @@
+var assert = require(''assert'');
+describe(''String'', function() {
+    describe(''#search()'', function() {
+        it(''should return -1 when the value is not present'', function() {
+            assert.equal(-1, ''text''.search(/testing/));
+        });
+    });
+});
+
+var should = require(‘'chai’').should(); // Execute the should function
+var test = ‘'a string’';
+test.should.be.a(‘'string’');
+var expect = require(‘'chai’').expect;
+var test = ‘'a string’';
+expect(test).to.be.a(‘'string);
+var assert = require(‘'chai’').assert;
+var test = ‘'a string’';
+assert.typeOf(test, ‘'string’');
+var should = require(''chai'').should();
+describe(''String'', function() {
+    describe(''#search()'', function() {
+        it(''should return -1 when the value is not present'', function() {
+            ''text''.search(/testing/).should.equal(-1);
+        });
+    });
+});
+
+module.exports = {
+    addClass: function(elem, newClass) {
+        if (elem.className.indexOf(newClass) !== -1) {
+            return;
+        }
+        if (elem.className !== '''') {
+            newClass = '' '' + newClass;
+        }
+        elem.className += newClass;
+    }
+};
+
+var addClass = require(''./addClass'').addClass;
+describe(''addClass'', function() {
+    it(''should add a new className if it does not exist'', function() {
+        var elem = {
+            className: ''existing-class''
+        };
+        addClass(elem, ''new-class'');
+        elem.className.split('' '')[1].should.equal(''new-class'');
+    });
+});
+
+
+
+
+<!doctype html>
+<html>
+    <head>
+        <title>Mocha Tests</title>
+        <link rel=""stylesheet"" href=""node_modules/mocha/mocha.css"">
+    </head>
+    <body>
+        <div id=""mocha""></div>
+        <script src=""node_modules/mocha/mocha.js""></script>
+        <script src=""node_modules/chai/chai.js""></script>
+        <script>mocha.setup(''bdd'');</script>
+        <script src=""test/addClass.js""></script>
+        <script src=""test/test.js""></script>
+        <script>
+            mocha.run();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+window.DOM = {
+    addClass: function(elem, newClass) {
+        if (elem.className.indexOf(newClass) !== -1) {
+            return;
+        }
+        if (elem.className !== '''') {
+            newClass = '' '' + newClass;
+        }
+        elem.className += newClass;
+    }
+};
+// Chai.should assertion
+var should = chai.should();
+describe(''String'', function() {
+    describe(''#search()'', function() {
+        it(''should return -1 when the value is not present'', function() {
+            ''text''.search(/testing/).should.equal(-1);
+        });
+    });
+});
+
+
+
+
+
+
+
+// Test the addClass method
+var addClass = DOM.addClass;
+describe(''addClass'', function() {
+    it(''should add a new className if it does not exist'', function() {
+        var elem = {
+            className: ''existing-class''
+        };
+        addClass(elem, ''new-class'');
+        elem.className.split('' '')[1].should.equal(''new-class'');
+    });
+});
+
+
+
+
+
+var spy = sinon.spy();
+it(''should invoke the callback on publish'', function() {
+    var spy = sinon.spy();
+    Payload.subscribe(''test-event'', spy);
+    Payload.publish(''test-event'');
+    spy.called.should.equal(true);
+});
+var spy = sinon.spy(testFunc);
+var spy = sinon.spy(object, ‘'method’');
+it(''should pass the error into the callback if save fails'', function() {
+    var error = new Error(''this is an error'');
+    var save = sinon.stub().throws(error);
+    var spy = sinon.spy();
+
+    registerUser({ name: ''Peebo'' }, spy);
+
+    save.restore();
+    sinon.assert.calledWith(spy, error);
+});
+
+
+describe(''incrementDataByOne'', function() {
+    it(''should increment stored value by one'', function() {
+        var mock = sinon.mock(Payload.storage);
+        mock.expects(''get'').withArgs(''data'').returns(0);
+        mock.expects(''set'').once().withArgs(''data'', 1);
+
+        incrementDataByOne();
+
+        mock.restore();
+        mock.verify();
+    });
+});
+
+
+describe(''sorting the list of users'', function() {
+    it(''sorts in ascending order by default'', function() {
+        var users = [''Kerri'', ''Jeff'', ''Brenda''];
+        var sorted = sortUsers(users);
+        expect(sorted).toEqual([''Brenda'', ''Jeff'', ''Kerri'']);
+    });
+});
+module.exports = function(config) {
+    ''use strict'';
+    config.set({
+        frameworks: [''mocha'', ''chai''],
+        files: [''test/*.js''],
+        browsers: [''Chrome'', ''Firefox''],
+        singleRun: true
+    });
+};
+
+
+
+
+module.exports = function(config) {
+    ''use strict'';
+    config.set({
+        frameworks: [''jasmine''],
+        files: [
+            ''bower_components/angular/angular.js'',
+            ''bower_components/angular-mocks/angular-mocks.js'',
+            ''test/angular-test.js''
+        ],
+        browsers: [''Chrome'', ''Firefox''],
+        singleRun: true
+    });
+};
+
+
+
+
+
+
+
+
+
+var giftappControllers = angular.module(''giftappControllers'', []);
+angular.module(''giftappControllers'')
+    .controller(''DashMainController'', [''$scope'', function($scope, List) {
+        $scope.lists = [
+            {''name'': ''Christmas List''},
+            {''name'': ''Birthday List''}
+        ];
+    }]);
+describe(''DashMainController'', function() {
+    var $controller;
+    beforeEach(module(''giftappControllers''));
+    beforeEach(inject(function(_$controller_) {
+        $controller = _$controller_;
+    }));
+    describe(''$scope.lists'', function() {
+        it(''has a length of 2'', function() {
+            var $scope = {};
+            var testController = $controller(''DashMainController'', {
+                $scope: $scope
+            });
+            expect($scope.lists.length).toEqual(2);
+        });
+    });
+});
+//jshint strict: false
+exports.config = {
+
+  allScriptsTimeout: 11000,
+
+  specs: [
+    ''*.js''
+  ],
+
+  capabilities: {
+    ''browserName'': ''chrome''
+  },
+
+  baseUrl: ''http://localhost:8000/'',
+
+  framework: ''jasmine'',
+
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: 30000
+  },
+
+  directConnect: true
+
+};
+
+
+
+
+
+
+
+describe(''my app'', function() {
+    …
+});
+it(''should automatically redirect to /view1 when location hash/fragment is empty'', function() {
+    browser.get(''index.html'');
+    expect(browser.getLocationAbsUrl()).toMatch(""/view1"");
+});
+describe(''view1'', function() {
+
+    beforeEach(function() {
+        browser.get(''index.html#!/view1'');
+    });
+
+    it(''should render view1 when user navigates to /view1'', function() {
+        expect(element.all(by.css(''[ng-view] p'')).first().getText()).toMatch(/partial for view 1/);
+    });
+
+});
+describe(''view2'', function() {
+
+    beforeEach(function() {
+        browser.get(''index.html#!/view2'');
+    });
+
+    it(''should render view2 when user navigates to /view2'', function() {
+        expect(element.all(by.css(''[ng-view] p'')).first().getText()).toMatch(/partial for view 2/);
+    });
+
+});

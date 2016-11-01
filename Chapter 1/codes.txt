@@ -1,0 +1,219 @@
+{
+  ""name"": ""my-app"",
+  ""version"": ""1.0.0"",
+  ""author"": ""Philip Klauzinski"",
+  ""license"": ""MIT"",
+  ""description"": ""My JavaScript single page application.""
+}
+{
+  ""name"": ""my-app"",
+  ""author"": ""Philip Klauzinski"",
+  ""description"": ""My JavaScript single page application."",
+  ""private"": true
+}
+{
+  ""name"": ""my-app"",
+  ""version"": ""1.0.0"",
+  ""author"": ""Philip Klauzinski"",
+  ""license"": ""MIT"",
+  ""devDependencies"": {
+    ""browserify"": ""^12.0.1""
+  }
+}
+
+? name: my-app
+? version: 0.0.0
+? description: My app description.
+? main file: index.html
+? what types of modules does this package expose? (Press <space> to? what types of modules does this package expose? globals
+? keywords: my, app, keywords
+? authors: Philip Klauzinski
+? license: MIT
+? homepage: http://gui.ninja
+? set currently installed components as dependencies? No
+? add commonly ignored files to ignore list? Yes
+? would you like to mark this package as private which prevents it from being accidentally published to the registry? Yes
+{
+  ""name"": ""my-app"",
+  ""version"": ""0.0.0"",
+  ""authors"": [
+    ""Philip Klauzinski""
+  ],
+  ""description"": ""My app description."",
+  ""main"": ""index.html"",
+  ""moduleType"": [
+    ""globals""
+  ],
+  ""keywords"": [
+    ""my"",
+    ""app"",
+    ""keywords""
+  ],
+  ""license"": ""MIT"",
+  ""homepage"": ""http://gui.ninja"",
+  ""ignore"": [
+    ""**/.*"",
+    ""node_modules"",
+    ""bower_components"",
+    ""test"",
+    ""tests""
+  ],
+  ""private"": true
+}
+{
+  ""name"": ""my-app"",
+  ""private"": true
+}
+{
+  ""directory"": ""path/to/my_components""
+}
+{
+  ""name"": ""my-app"",
+  ""private"": true,
+  ""dependencies"": {
+    ""jquery"": ""~2.1.4""
+  },
+  ""devDependencies"": {
+    ""mocha"": ""~2.3.4""
+  }
+}
+{
+  ""name"": ""my-app"",
+  ""version"": ""1.0.0"",
+  ""author"": ""Philip Klauzinski"",
+  ""license"": ""MIT"",
+  ""devDependencies"": {
+    ""grunt"": ""^0.4.5""
+  }
+}
+{
+  ""name"": ""my-app"",
+  ""version"": ""1.0.0"",
+  ""author"": ""Philip Klauzinski"",
+  ""license"": ""MIT"",
+  ""devDependencies"": {
+    ""grunt"": ""^0.4.5"",
+    ""grunt-contrib-jshint"": ""^0.11.3""
+  }
+}
+  ""devDependencies"": {
+    ""grunt"": ""^0.4.5"",
+    ""grunt-contrib-jshint"": ""^0.11.3"",
+    ""grunt-contrib-watch"": ""^0.6.1""
+  }
+module.exports = {
+    // Object properties here
+module.exports = function() {
+    // Code for the module here
+module.exports = function(grunt) {
+    // Grunt code here
+module.exports = function(grunt) {
+    ''use strict'';
+    grunt.initConfig({
+        pkg: grunt.file.readJSON(''package.json'')
+module.exports = function(grunt) {
+    ''use strict'';
+    grunt.initConfig({
+        pkg: grunt.file.readJSON(''package.json''),
+        jshint: {
+            options: {
+                curly: true,
+                eqeqeq: true,
+                eqnull: true,
+                browser: true,
+                newcap: false,
+                es3: true,
+                forin: true,
+                indent: 4,
+                unused: ''vars'',
+                strict: true,
+                trailing: true,
+                quotmark: ''single'',
+                latedef: true,
+                globals: {
+                    jQuery: true
+                }
+            },
+            files: {
+                src: [''Gruntfile.js'', ''js/src/*.js'']
+            }
+        }
+    });
+};
+watch: {
+    jshint: {
+        files: [''js/src/*.js''],
+        tasks: [''jshint'']
+    }
+}
+grunt.loadNpmTasks(''grunt-contrib-jshint'');
+grunt.loadNpmTasks(''grunt-contrib-watch'');
+
+module.exports = function(grunt) {
+    ''use strict'';
+    grunt.initConfig({
+        pkg: grunt.file.readJSON(''package.json''),
+        jshint: {
+            options: {
+                curly: true,
+                eqeqeq: true,
+                eqnull: true,
+                browser: true,
+                newcap: false,
+                es3: true,
+                forin: true,
+                indent: 4,
+                unused: ''vars'',
+                strict: true,
+                trailing: true,
+                quotmark: ''single'',
+                latedef: true,
+                globals: {
+                    jQuery: true
+                }
+            },
+            files: {
+                src: [''Gruntfile.js'', ''js/src/*.js'']
+            }
+        },
+        watch: {
+            jshint: {
+                files: [''js/src/*.js''],
+                tasks: [''jshint'']
+            }
+        }
+    });
+    grunt.loadNpmTasks(''grunt-contrib-jshint'');
+    grunt.loadNpmTasks(''grunt-contrib-watch'');
+};
+var test = function() {
+    console.log(''test'');
+};
+var test = function() {
+    ''use strict'';
+    console.log(''test'');
+};
+test();
+
+var test = function() {
+    console.log(''test'');
+};
+test()
+var test = function() {
+    ''use strict'';
+    console.log(''test'');
+};
+test();
+grunt.registerTask(''my-task'', ''My custom task.'', [''jshint'']);
+
+grunt.registerTask(''my-task'', ''My custom task.'', function() {
+    grunt.log.writeln(''This is my custom task.'');
+});
+grunt.registerTask(''my-task'', ''My custom task.'', function(arg1, arg2) {
+    grunt.log.writeln(this.name + '' output...'');
+    grunt.log.writeln(''arg1: '' + arg1 + '', arg2: '' + arg2);
+});
+grunt.registerTask(''foo'', ''My custom task.'', function() {
+    grunt.log.writeln(''Now calling the jshint and watch tasks…'');
+    grunt.task.run(''jshint'', ''watch'');
+});
