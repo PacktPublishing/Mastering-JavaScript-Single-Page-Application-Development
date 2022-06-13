@@ -1,7 +1,3 @@
-## [Get this title for $10 on Packt's Spring Sale](https://www.packt.com/B05228?utm_source=github&utm_medium=packt-github-repo&utm_campaign=spring_10_dollar_2022)
------
-For a limited period, all eBooks and Videos are only $10. All the practical content you need \- by developers, for developers
-
 #Mastering JavaScript Single Page Application Development
 This is the code repository for [Mastering JavaScript Single Page Application Development](https://www.packtpub.com/web-development/mastering-javascript-single-page-application-development?utm_source=github&utm_medium=repository&utm_campaign=9781785881640), published by Packt. It contains all the supporting project files necessary to work through the book from start to finish.
 ##Instructions and Navigations
